@@ -345,7 +345,21 @@ footer{
     type="file"
     id="videoFile"
     accept="video/mp4,video/webm,video/quicktime"
+  ><div style="margin-top:20px;">
+  <input
+    type="file"
+    id="videoFile"
+    accept="video/mp4,video/webm,video/quicktime"
   >
+
+  <button
+    class="continue"
+    onclick="downloadOriginalVideo()"
+    style="margin-top:12px;"
+  >
+    ⬇️ Download HD Video
+  </button>
+</div>
 
   <button
     class="continue"
@@ -508,7 +522,28 @@ function copyLink(){
 
   alert("TikTok link copied! ✅");
 }
+function downloadOriginalVideo(){
 
+    const fileInput = document.getElementById("videoFile");
+
+    if(!fileInput.files.length){
+        alert("Please select your original video first.");
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const url = URL.createObjectURL(file);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = file.name;
+
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    URL.revokeObjectURL(url);
+}
 </script>function downloadOriginalVideo(){
 
     const fileInput = document.getElementById("videoFile");
