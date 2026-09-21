@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>TikTools LK — TikTok Video Tools</title>
-<meta name="description" content="TikTools LK - Simple and fast video tools for creators.">
+
+<meta name="description" content="TikTools LK - Simple and fast TikTok video tools for creators.">
 
 <style>
 *{
@@ -17,72 +18,83 @@
 body{
   font-family:Arial,Helvetica,sans-serif;
   min-height:100vh;
-  background:
-    radial-gradient(circle at top,#24113d 0%,#0b0910 42%,#050509 100%);
   color:#fff;
+  background:
+    radial-gradient(circle at 20% 10%,#ff005522,transparent 30%),
+    radial-gradient(circle at 80% 20%,#00f2ea22,transparent 30%),
+    linear-gradient(135deg,#08080d,#11111b 55%,#07070b);
 }
 
 .container{
-  width:100%;
-  max-width:850px;
+  width:92%;
+  max-width:1100px;
   margin:auto;
-  padding:35px 18px;
 }
 
-.header{
-  text-align:center;
-  margin-bottom:28px;
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:25px 0;
 }
 
 .logo{
-  width:70px;
-  height:70px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:22px;
-  font-size:35px;
-  background:linear-gradient(135deg,#ff0050,#7b2cff,#00f2ea);
-  box-shadow:0 0 35px #ff005055;
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:.5px;
 }
 
-h1{
-  font-size:38px;
-  margin-top:18px;
-  letter-spacing:-1px;
+.logo span{
+  color:#00f2ea;
+}
+
+.badge{
+  padding:8px 14px;
+  border:1px solid #ffffff22;
+  border-radius:30px;
+  background:#ffffff0d;
+  font-size:13px;
+  color:#ccc;
+}
+
+.hero{
+  text-align:center;
+  padding:80px 0 50px;
+}
+
+.hero h1{
+  font-size:clamp(40px,7vw,76px);
+  line-height:1;
+  font-weight:900;
+  margin-bottom:22px;
 }
 
 .gradient{
-  background:linear-gradient(90deg,#ff0050,#b43cff,#00f2ea);
+  background:linear-gradient(90deg,#ff0050,#00f2ea);
   -webkit-background-clip:text;
   color:transparent;
 }
 
-.subtitle{
-  color:#aaa8b7;
-  margin-top:10px;
-  font-size:16px;
+.hero p{
+  max-width:650px;
+  margin:auto;
+  color:#aaa;
+  font-size:18px;
+  line-height:1.7;
 }
 
-.card{
-  background:rgba(20,18,29,.88);
-  border:1px solid #342d42;
-  border-radius:26px;
-  padding:30px;
-  box-shadow:0 25px 70px #0009;
-  backdrop-filter:blur(12px);
+.tool{
+  max-width:760px;
+  margin:40px auto;
+  padding:12px;
+  border:1px solid #ffffff18;
+  border-radius:22px;
+  background:#ffffff0a;
+  backdrop-filter:blur(15px);
+  box-shadow:0 25px 80px #00000055;
 }
 
-.label{
-  display:block;
-  color:#ddd;
-  font-size:14px;
-  font-weight:bold;
-  margin-bottom:10px;
-}
-
-.input-box{
+.input-row{
   display:flex;
   gap:10px;
 }
@@ -90,149 +102,209 @@ h1{
 input{
   flex:1;
   min-width:0;
-  padding:17px;
+  padding:18px;
   border-radius:14px;
-  border:1px solid #40394c;
-  background:#0d0b12;
-  color:white;
+  border:1px solid #ffffff18;
+  background:#09090e;
+  color:#fff;
   outline:none;
   font-size:15px;
 }
 
 input:focus{
-  border-color:#b43cff;
-  box-shadow:0 0 0 3px #b43cff22;
+  border-color:#00f2ea88;
 }
 
 button{
   border:0;
-  border-radius:14px;
-  padding:0 25px;
-  background:linear-gradient(135deg,#ff0050,#8c32ff);
-  color:white;
-  font-weight:bold;
-  font-size:15px;
   cursor:pointer;
-  transition:.2s;
+  font-weight:700;
+  border-radius:14px;
+  padding:0 24px;
+  font-size:15px;
 }
 
-button:hover{
+.continue{
+  background:linear-gradient(90deg,#ff0050,#ff315f);
+  color:white;
+}
+
+.continue:hover{
   transform:translateY(-2px);
-  box-shadow:0 10px 30px #ff005044;
 }
 
-.message{
+.result{
   display:none;
-  margin-top:18px;
-  padding:14px;
-  border-radius:12px;
-  background:#17131f;
-  color:#cfcbd8;
-  line-height:1.5;
+  margin-top:15px;
+  padding:20px;
+  border-radius:16px;
+  background:#ffffff08;
+  border:1px solid #ffffff12;
+  text-align:left;
+}
+
+.result h3{
+  margin-bottom:8px;
+}
+
+.result p{
+  color:#aaa;
+  font-size:14px;
+  word-break:break-all;
+  margin-bottom:15px;
 }
 
 .actions{
-  display:none;
+  display:flex;
   gap:10px;
-  margin-top:15px;
+  flex-wrap:wrap;
 }
 
-.secondary{
-  flex:1;
-  padding:14px;
-  background:#24202d;
-  border:1px solid #40394c;
+.action{
+  padding:12px 18px;
+  background:#ffffff12;
+  color:white;
+  border:1px solid #ffffff18;
 }
 
-.secondary:hover{
-  background:#302a3b;
-  box-shadow:none;
+.action:hover{
+  background:#ffffff20;
 }
 
 .features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:18px;
+  gap:18px;
+  margin:70px 0;
 }
 
-.feature{
-  background:#111018;
-  border:1px solid #292533;
-  padding:18px 12px;
-  border-radius:16px;
+.card{
+  padding:28px;
+  border-radius:20px;
+  border:1px solid #ffffff12;
+  background:#ffffff08;
+  transition:.25s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#00f2ea55;
+}
+
+.icon{
+  font-size:30px;
+  margin-bottom:15px;
+}
+
+.card h3{
+  margin-bottom:9px;
+}
+
+.card p{
+  color:#999;
+  line-height:1.6;
+  font-size:14px;
+}
+
+.steps{
+  margin:80px 0;
+}
+
+.section-title{
   text-align:center;
+  font-size:35px;
+  margin-bottom:35px;
 }
 
-.feature-icon{
-  font-size:25px;
-  margin-bottom:8px;
+.step-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
 }
 
-.feature strong{
-  display:block;
-  font-size:13px;
+.step{
+  text-align:center;
+  padding:30px;
+  border-radius:20px;
+  background:#ffffff07;
+  border:1px solid #ffffff10;
 }
 
-.feature span{
-  color:#85818e;
-  font-size:11px;
-  display:block;
-  margin-top:5px;
+.number{
+  width:45px;
+  height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 15px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ff0050,#00f2ea);
+  font-weight:900;
 }
 
-.ad{
-  margin-top:20px;
-  padding:24px;
-  border:1px dashed #413b49;
+.step p{
+  color:#999;
+  margin-top:8px;
+  font-size:14px;
+}
+
+.notice{
+  margin:60px 0;
+  padding:22px;
   border-radius:18px;
+  background:#00f2ea08;
+  border:1px solid #00f2ea22;
+  color:#aaa;
   text-align:center;
-  color:#77727f;
-  background:#0d0b11;
-}
-
-.info{
-  margin-top:25px;
-  text-align:center;
-  color:#85818e;
-  font-size:13px;
   line-height:1.7;
+  font-size:14px;
 }
 
 footer{
   text-align:center;
-  color:#66616d;
-  font-size:12px;
-  padding:28px 10px;
+  padding:35px 0;
+  color:#666;
+  border-top:1px solid #ffffff0d;
+  font-size:13px;
 }
 
-@media(max-width:600px){
-  .container{
-    padding:25px 14px;
+@media(max-width:700px){
+
+  header{
+    padding:20px 0;
   }
 
-  h1{
-    font-size:30px;
+  .badge{
+    display:none;
   }
 
-  .card{
-    padding:22px 17px;
+  .hero{
+    padding:55px 0 30px;
   }
 
-  .input-box{
+  .hero p{
+    font-size:15px;
+  }
+
+  .input-row{
     flex-direction:column;
   }
 
-  button{
-    min-height:52px;
+  .continue{
+    padding:16px;
   }
 
-  .features{
+  .features,
+  .step-grid{
     grid-template-columns:1fr;
   }
 
-  .actions{
-    flex-direction:column;
+  .features{
+    margin:45px 0;
+  }
+
+  .section-title{
+    font-size:28px;
   }
 }
 </style>
@@ -242,141 +314,168 @@ footer{
 
 <div class="container">
 
-  <div class="header">
-    <div class="logo">🎬</div>
+<header>
+  <div class="logo">Tik<span>Tools</span> LK</div>
+  <div class="badge">⚡ Fast & Simple</div>
+</header>
 
-    <h1>
-      TikTools <span class="gradient">LK</span>
-    </h1>
+<section class="hero">
 
-    <p class="subtitle">
-      Simple video tools for creators.
+  <h1>
+    Simple tools for<br>
+    <span class="gradient">TikTok creators.</span>
+  </h1>
+
+  <p>
+    Paste a TikTok video link and get started instantly.
+    Fast, simple and mobile friendly.
+  </p>
+
+  <div class="tool">
+
+    <div class="input-row">
+
+      <input
+        id="linkInput"
+        type="url"
+        placeholder="Paste TikTok video link here..."
+      >
+
+      <button class="continue" onclick="checkLink()">
+        Continue →
+      </button>
+
+    </div>
+
+    <div class="result" id="result">
+
+      <h3>✅ Link detected</h3>
+
+      <p id="resultText"></p>
+
+      <div class="actions">
+
+        <button class="action" onclick="openTikTok()">
+          Open TikTok
+        </button>
+
+        <button class="action" onclick="copyLink()">
+          Copy Link
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="features">
+
+  <div class="card">
+    <div class="icon">⚡</div>
+    <h3>Fast</h3>
+    <p>
+      Quickly check and process your TikTok link.
     </p>
   </div>
 
   <div class="card">
+    <div class="icon">📱</div>
+    <h3>Mobile Friendly</h3>
+    <p>
+      Designed to work smoothly on phones, tablets and computers.
+    </p>
+  </div>
 
-    <label class="label" for="url">
-      Paste your TikTok video link
-    </label>
+  <div class="card">
+    <div class="icon">🔒</div>
+    <h3>Simple & Safe</h3>
+    <p>
+      No complicated setup. Just paste your link and continue.
+    </p>
+  </div>
 
-    <div class="input-box">
-      <input
-        id="url"
-        type="url"
-        placeholder="https://www.tiktok.com/@user/video/..."
-        autocomplete="off"
-      >
+</section>
 
-      <button onclick="processLink()">
-        Continue
-      </button>
+
+<section class="steps">
+
+  <h2 class="section-title">How it works</h2>
+
+  <div class="step-grid">
+
+    <div class="step">
+      <div class="number">1</div>
+      <h3>Copy</h3>
+      <p>Copy the TikTok video link you want to use.</p>
     </div>
 
-    <div id="message" class="message"></div>
-
-    <div id="actions" class="actions">
-      <button class="secondary" onclick="openTikTok()">
-        🔗 Open TikTok
-      </button>
-
-      <button class="secondary" onclick="copyLink()">
-        📋 Copy Link
-      </button>
+    <div class="step">
+      <div class="number">2</div>
+      <h3>Paste</h3>
+      <p>Paste the link into the box above.</p>
     </div>
 
-    <div class="features">
-
-      <div class="feature">
-        <div class="feature-icon">⚡</div>
-        <strong>Fast</strong>
-        <span>Simple interface</span>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">📱</div>
-        <strong>Mobile Friendly</strong>
-        <span>Works on phones</span>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">🔒</div>
-        <strong>Simple & Safe</strong>
-        <span>Use your own content</span>
-      </div>
-
+    <div class="step">
+      <div class="number">3</div>
+      <h3>Continue</h3>
+      <p>Check the link and open the TikTok video.</p>
     </div>
 
   </div>
 
-  <div class="ad">
-    📢 Advertisement space
-    <br>
-    <small>Ad network can be added later.</small>
-  </div>
+</section>
 
-  <div class="info">
-    <strong>How it works</strong><br>
-    Paste a TikTok link above → check the link → open the video.
-    <br><br>
-    Only use this service with videos you own or have permission to use.
-  </div>
 
-  <footer>
-    © 2026 TikTools LK · All rights reserved.
-  </footer>
+<div class="notice">
+  ⚠️ Please only use this service with videos you own
+  or have permission to use. Respect copyright and platform rules.
+</div>
+
+
+<footer>
+  © 2026 TikTools LK · All rights reserved.
+</footer>
 
 </div>
+
 
 <script>
 
 let currentLink = "";
 
-function processLink(){
+function checkLink(){
 
-  const input = document.getElementById("url");
-  const message = document.getElementById("message");
-  const actions = document.getElementById("actions");
+  const input = document.getElementById("linkInput");
+  const result = document.getElementById("result");
+  const resultText = document.getElementById("resultText");
 
-  const url = input.value.trim();
+  const link = input.value.trim();
 
-  message.style.display = "block";
-  actions.style.display = "none";
-
-  if(!url){
-    message.innerHTML = "⚠️ Please paste a TikTok video link.";
+  if(!link){
+    alert("Please paste a TikTok link first.");
     return;
   }
 
-  try{
-
-    const parsed = new URL(url);
-    const host = parsed.hostname.toLowerCase();
-
-    if(
-      !host.includes("tiktok.com") &&
-      !host.includes("vm.tiktok.com") &&
-      !host.includes("vt.tiktok.com")
-    ){
-      message.innerHTML =
-        "❌ This doesn't look like a TikTok link. Please check the URL.";
-      return;
-    }
-
-    currentLink = url;
-
-    message.innerHTML =
-      "✅ TikTok link detected successfully! Choose an option below.";
-
-    actions.style.display = "flex";
-
-  }catch(error){
-
-    message.innerHTML =
-      "❌ Please enter a valid web link.";
-
+  if(!link.includes("tiktok.com")){
+    alert("Please enter a valid TikTok link.");
+    return;
   }
+
+  currentLink = link;
+
+  resultText.textContent = link;
+  result.style.display = "block";
+
+  result.scrollIntoView({
+    behavior:"smooth",
+    block:"nearest"
+  });
 }
+
 
 function openTikTok(){
 
@@ -386,28 +485,15 @@ function openTikTok(){
 
 }
 
+
 function copyLink(){
 
   if(!currentLink) return;
 
-  navigator.clipboard.writeText(currentLink).then(function(){
+  navigator.clipboard.writeText(currentLink);
 
-    const message = document.getElementById("message");
-
-    message.style.display = "block";
-    message.innerHTML = "✅ Link copied to clipboard!";
-
-  });
-
+  alert("TikTok link copied! ✅");
 }
-
-document.getElementById("url").addEventListener("keydown",function(event){
-
-  if(event.key === "Enter"){
-    processLink();
-  }
-
-});
 
 </script>
 
